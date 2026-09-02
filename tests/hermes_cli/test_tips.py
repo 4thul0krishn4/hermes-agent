@@ -53,9 +53,8 @@ class TestTipIntegrationInCLI:
 
 def test_gateway_tips_only_reference_gateway_commands() -> None:
     gateway_tips = _tips_for_surface("gateway")
-    gateway_tip_text = "\n".join(gateway_tips)
 
-    assert "/busy queue|steer|interrupt" not in gateway_tip_text
+    assert "busy" in GATEWAY_KNOWN_COMMANDS
     assert len(gateway_tips) < len(TIPS)
     for tip in gateway_tips:
         for command in _tip_command_refs(tip):
